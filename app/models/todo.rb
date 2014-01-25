@@ -1,6 +1,12 @@
 ##
 # = Todo管理モデル
 class Todo < ActiveRecord::Base
+  PRIORITY_ENUM = {
+    high: 1,
+    middle: 2,
+    low: 3
+  }
+
   LABEL_ENUM =  { default: "",
                   success: "success",
                   important: "important",

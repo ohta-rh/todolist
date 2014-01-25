@@ -6,7 +6,7 @@ class TodosController < ApplicationController
   # === 最新のTODOリストを表示します
   #
   def index
-    @todos = ::Todo.order(priority: :desc)
+    @todos = ::Todo.order(priority: :asc)
   end
 
   #
