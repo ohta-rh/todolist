@@ -9,4 +9,10 @@ class TodosController < ApplicationController
     @todos = ::Todo.order(priority: :desc)
   end
 
+  #
+  # === TodoListを作成します
+  #
+  def create
+  end
+
 end

@@ -4,6 +4,7 @@ class CreateTodos < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.integer :priority, default: 0, null: false
+      t.string :label, default: "", null: false
       t.timestamps
     end
   end
