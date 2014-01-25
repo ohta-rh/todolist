@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :todo do
+    title "hoge"
+    description "fuga"
   end
 end

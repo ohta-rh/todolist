@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class TodoTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @subject = FactoryGirl.create :todo
+  end
+  test "bootstrap_label_class should return" do
+
+    assert_equal "", @subject.bootstrap_label_class
+
+    Todo::LABEL_ENUM.values.reject{|l| l.blank? }.each do |val|
+      @subject.label = "warning"
+      assert_equal "label-warning", @subject.bootstrap_label_class
+    end
+
+    @subject.label = ""
+    assert_equal "", @subject.bootstrap_label_class
+  end
 end
