@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140125050113) do
 
   create_table "todos", force: true do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "description"
     t.integer  "priority",    default: 0,  null: false
     t.string   "label",       default: "", null: false

@@ -1,30 +1,59 @@
 <h2>ToDo List</h2>
 <hr>
+<%- if @todos.blank? -%>
+  <div class="well">
+  登録されているTODOはありません。
+  </div>
+<%- else %>
+  <article>
+    <% @todos.each do |todo| %>
+    <section class="todo">
+      <h3><%= todo.title %></h3>
+      <div class="well well-mid">
+        <p><span class="label <%= todo.bootstrap_label_class%>">☆</span></p>
+        <p><%= todo.description %></p>
+      </div>
+    </section>
+    <% end %>
+  </article>
+<% end %>
 
-<article>
-  <section class="todo">
-    <h3>name</h3>
-    <div class="well well-mid">
-      <p>name</p>
-    </div>
-  </section>
-</article>
-
-<a href="#create" role="button" class="btn btn-primary" data-toggle="modal">ADD TODO</a>
+<a href="#create" role="button" class="btn btn-primary" data-toggle="modal">TODO作成</a>
 
 <!-- Modal -->
 <div id="create" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">TODO登録</h3>
   </div>
   <div class="modal-body">
-    <p>One fine body…</p>
+    <%= form_for Todo.new do |f| %>
+    <table class="table table-bordered">
+      <tr>
+        <th><%= Todo.human_attribute_name :title %></th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th><%= Todo.human_attribute_name :description %></th>
+        <td><%= f.text_field :description %></td>
+      </tr>
+      <tr>
+        <th><%= Todo.human_attribute_name :priority %></th>
+        <td><%= f.select :priority, [1,2,3,4] %>
+      </tr>
+      <tr>
+        <th><%= Todo.human_attribute_name :label %></th>
+        <td><%= f.select :label, Todo::LABEL_ENUM %></td>
+      </tr>
+      <tr>
+      </tr>
+    </table>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">キャンセル</button>
+    <button class="btn btn-primary">作成</button>
   </div>
+  <%- end -%>
 </div>
 
 
