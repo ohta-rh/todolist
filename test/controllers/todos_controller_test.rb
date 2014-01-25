@@ -5,4 +5,9 @@ class TodosControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
+
+  test "should create new Todo object" do
+    post :create, todo: {name: 'hoge', description: "fuga"}
+    assert_response :success
+  end
 end

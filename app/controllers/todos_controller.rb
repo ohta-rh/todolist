@@ -13,6 +13,14 @@ class TodosController < ApplicationController
   # === TodoListを作成します
   #
   def create
+    todo = ::Todo.create todo_params
+
+    render json: todo
+
+  end
+
+  def todo_params
+    params.require(:todo).permit(:name, :description, :priority, :label)
   end
 
 end
