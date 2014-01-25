@@ -39,7 +39,7 @@
       </tr>
       <tr>
         <th><%= Todo.human_attribute_name :priority %></th>
-        <td><%= f.select :priority, [1,2,3,4] %>
+        <td><%= f.select :priority, Todo::PRIORITY_ENUM %>
       </tr>
       <tr>
         <th><%= Todo.human_attribute_name :label %></th>

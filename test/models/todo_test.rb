@@ -9,8 +9,8 @@ class TodoTest < ActiveSupport::TestCase
     assert_equal "", @subject.bootstrap_label_class
 
     Todo::LABEL_ENUM.values.reject{|l| l.blank? }.each do |val|
-      @subject.label = "warning"
-      assert_equal "label-warning", @subject.bootstrap_label_class
+      @subject.label = val
+      assert_equal "label-#{val}", @subject.bootstrap_label_class
     end
 
     @subject.label = ""
